@@ -17,6 +17,7 @@ namespace clinica2.Models
         public string? middle_name { get; set; }
 
         [Required(ErrorMessage = "Дата рождения обязательна.")]
+        [DataType(DataType.Date)]
         public DateTime? date_of_birth { get; set; }
 
         [Required(ErrorMessage = "Пол обязателен.")]
@@ -27,7 +28,7 @@ namespace clinica2.Models
         public string? policy_number { get; set; }
 
         [Required]
-        [StringLength(20, ErrorMessage = "Телефон не может превышать 20 символов.")]
+        [Phone(ErrorMessage = "Неверный формат телефона")]
         public string? telephone { get; set; }
 
         [Required(ErrorMessage = "Логин обязателен.")]
@@ -35,7 +36,7 @@ namespace clinica2.Models
         public string? login { get; set; }
 
         [Required(ErrorMessage = "Пароль обязателен.")]
-        [StringLength(50, ErrorMessage = "Пароль не может превышать 50 символов.")]
+        [DataType(DataType.Password)]
         public string? password { get; set; }
         public int id_site { get; set; }
         public int id_role { get; set; }

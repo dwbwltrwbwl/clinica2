@@ -3,18 +3,18 @@
 }
 
 <div style="text-align: center; margin-top: 20vh;">
-    <h2 style="text-align: center; margin-bottom: 20px; color: #94a728;">Вход</h2>
+    <h2 style="text-align: center; margin-bottom: 20px; color: #a35f56;">Вход</h2>
 
-    <form asp-action="Login" method="post" style="max-width: 300px; margin: auto; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);">
+    <form asp-action="Login" method="post" style="max-width: 300px; margin: auto; padding: 20px; background: white ; border-radius: 8px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);">
         <div style="margin-bottom: 15px;">
-            <label for="login" style="display: block; margin-bottom: 5px; font-weight: bold; color: #94a728; text-align: left;">Логин</label>
+            <label for="login" style="display: block; margin-bottom: 5px; font-weight: bold; color: #a35f56; text-align: left;">Логин</label>
             <input type="text" name="login" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;" />
         </div>
         <div style="margin-bottom: 15px;">
-            <label for="password" style="display: block; margin-bottom: 5px; font-weight: bold; color: #94a728; text-align: left;">Пароль</label>
+            <label for="password" style="display: block; margin-bottom: 5px; font-weight: bold; color: #a35f56; text-align: left;">Пароль</label>
             <input type="password" name="password" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;" />
         </div>
-        <button type="submit" style="width: 100%; padding: 10px; font-weight: bold; background-color: #28a745; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px;">Войти</button>
+        <button type="submit" style="width: 100%; padding: 10px; font-weight: bold; background-color: #a35f56; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px;">Войти</button>
 
         <div style="color: red; margin-top: 10px;">
             @if (!ViewData.ModelState.IsValid)
@@ -28,6 +28,6 @@
     </form>
 
     <div style="text-align: center; margin-top: 20px;">
-        <a asp-action="Register" style="color: #94a728; text-decoration: none; font-weight: bold;">Зарегистрироваться</a>
+        <a asp-action="Register" style="color: #a35f56; text-decoration: none; font-weight: bold;">Зарегистрироваться</a>
     </div>
 </div>

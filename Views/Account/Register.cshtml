@@ -1,35 +1,82 @@
 ﻿@model RegisterViewModel
 
 <div style="text-align: center; margin-top: 20vh;">
-    <h2 style="text-align: center; margin-bottom: 20px; color: #94a728;">Регистрация</h2>
+    <h2 style="text-align: center; margin-bottom: 20px; color: #a35f56;">Регистрация</h2>
 
-    <form asp-action="Register" method="post" style="max-width: 400px; margin: auto; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);">
-        <div style="margin-bottom: 15px;">
-            <label asp-for="last_name" style="display: block; margin-bottom: 5px; font-weight: bold; color: #94a728; text-align: left;">Фамилия</label>
-            <input asp-for="last_name" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;" />
-            <span asp-validation-for="last_name" style="color: red; font-size: 12px;"></span>
+    <form asp-action="Register" method="post" style="max-width: 800px; margin: auto; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);">
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-bottom: 15px;">
+            <div style="display: flex; flex-direction: column; gap: 15px;">
+                <div>
+                    <label asp-for="last_name" style="display: block; margin-bottom: 5px; font-weight: bold; color: #a35f56; text-align: left;">Фамилия</label>
+                    <input asp-for="last_name" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;" />
+                    <span asp-validation-for="last_name" style="color: red; font-size: 12px;"></span>
+                </div>
+
+                <div>
+                    <label asp-for="first_name" style="display: block; margin-bottom: 5px; font-weight: bold; color: #a35f56; text-align: left;">Имя</label>
+                    <input asp-for="first_name" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;" />
+                    <span asp-validation-for="first_name" style="color: red; font-size: 12px;"></span>
+                </div>
+
+                <div>
+                    <label asp-for="middle_name" style="display: block; margin-bottom: 5px; font-weight: bold; color: #a35f56; text-align: left;">Отчество</label>
+                    <input asp-for="middle_name" maxlength="50" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;" />
+                    <span asp-validation-for="middle_name" style="color: red; font-size: 12px;"></span>
+                </div>
+
+                <div>
+                    <label asp-for="date_of_birth" style="display: block; margin-bottom: 5px; font-weight: bold; color: #a35f56; text-align: left;">Дата рождения</label>
+                    <input asp-for="date_of_birth" type="date" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;" />
+                    <span asp-validation-for="date_of_birth" style="color: red; font-size: 12px;"></span>
+                </div>
+
+                <div>
+                    <label asp-for="gender" style="display: block; margin-bottom: 5px; font-weight: bold; color: #a35f56; text-align: left;">Пол</label>
+                    <select asp-for="gender" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;">
+                        <option value="М">Мужской</option>
+                        <option value="Ж">Женский</option>
+                    </select>
+                    <span asp-validation-for="gender" style="color: red; font-size: 12px;"></span>
+                </div>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 15px;">
+                <div>
+                    <label asp-for="policy_number" style="display: block; margin-bottom: 5px; font-weight: bold; color: #a35f56; text-align: left;">Номер полиса</label>
+                    <input asp-for="policy_number" maxlength="50" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;" />
+                    <span asp-validation-for="policy_number" style="color: red; font-size: 12px;"></span>
+                </div>
+
+                <div>
+                    <label asp-for="id_site" style="display: block; margin-bottom: 5px; font-weight: bold; color: #a35f56; text-align: left;">Участок</label>
+                    <select asp-for="id_site" asp-items="ViewBag.Sites"
+                            style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;">
+                        <option value="">Выберите участок</option>
+                    </select>
+                    <span asp-validation-for="id_site" style="color: red; font-size: 12px;"></span>
+                </div>
+
+                <div>
+                    <label asp-for="telephone" style="display: block; margin-bottom: 5px; font-weight: bold; color: #a35f56; text-align: left;">Телефон</label>
+                    <input asp-for="telephone" type="tel" pattern="[+]{0,1}[0-9]{11}" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;" />
+                    <span asp-validation-for="telephone" style="color: red; font-size: 12px;"></span>
+                </div>
+
+                <div>
+                    <label asp-for="login" style="display: block; margin-bottom: 5px; font-weight: bold; color: #a35f56; text-align: left;">Логин</label>
+                    <input asp-for="login" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;" />
+                    <span asp-validation-for="login" style="color: red; font-size: 12px;"></span>
+                </div>
+
+                <div>
+                    <label asp-for="password" style="display: block; margin-bottom: 5px; font-weight: bold; color: #a35f56; text-align: left;">Пароль</label>
+                    <input asp-for="password" type="password" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;" />
+                    <span asp-validation-for="password" style="color: red; font-size: 12px;"></span>
+                </div>
+            </div>
         </div>
-        <div style="margin-bottom: 15px;">
-            <label asp-for="first_name" style="display: block; margin-bottom: 5px; font-weight: bold; color: #94a728; text-align: left;">Имя</label>
-            <input asp-for="first_name" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;" />
-            <span asp-validation-for="first_name" style="color: red; font-size: 12px;"></span>
-        </div>
-        <div style="margin-bottom: 15px;">
-            <label asp-for="middle_name" style="display: block; margin-bottom: 5px; font-weight: bold; color: #94a728; text-align: left;">Отчество</label>
-            <input asp-for="middle_name" maxlength="50" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;" />
-            <span asp-validation-for="middle_name" style="color: red; font-size: 12px;"></span>
-        </div>
-        <div style="margin-bottom: 15px;">
-            <label asp-for="login" style="display: block; margin-bottom: 5px; font-weight: bold; color: #94a728; text-align: left;">Логин</label>
-            <input asp-for="login" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;" />
-            <span asp-validation-for="login" style="color: red; font-size: 12px;"></span>
-        </div>
-        <div style="margin-bottom: 15px;">
-            <label asp-for="password" style="display: block; margin-bottom: 5px; font-weight: bold; color: #94a728; text-align: left;">Пароль</label>
-            <input asp-for="password" type="password" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;" />
-            <span asp-validation-for="password" style="color: red; font-size: 12px;"></span>
-        </div>
-        <button type="submit" style="width: 100%; font-weight: bold; padding: 10px; background-color: #28a745; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px;">Зарегистрироваться</button>
+
+        <button type="submit" style="width: 100%; font-weight: bold; padding: 10px; background-color: #a35f56; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px;">Зарегистрироваться</button>
     </form>
 </div>
 

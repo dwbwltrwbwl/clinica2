@@ -12,8 +12,8 @@ using clinica2.Data;
 namespace clinica2.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250522101231_test01")]
-    partial class test01
+    [Migration("20250522190906_test10")]
+    partial class test10
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
