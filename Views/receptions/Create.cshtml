@@ -1,0 +1,64 @@
+﻿@model clinica2.Models.receptions
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>receptions</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="date_reception" class="control-label"></label>
+                <input asp-for="date_reception" class="form-control" />
+                <span asp-validation-for="date_reception" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="time_reception" class="control-label"></label>
+                <input asp-for="time_reception" class="form-control" />
+                <span asp-validation-for="time_reception" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="id_patient" class="control-label"></label>
+                <select asp-for="id_patient" class ="form-control" asp-items="ViewBag.id_patient"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="id_doctor" class="control-label"></label>
+                <select asp-for="id_doctor" class ="form-control" asp-items="ViewBag.id_doctor"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="id_status" class="control-label"></label>
+                <select asp-for="id_status" class ="form-control" asp-items="ViewBag.id_status"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="symptoms" class="control-label"></label>
+                <input asp-for="symptoms" class="form-control" />
+                <span asp-validation-for="symptoms" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="id_diagnosis" class="control-label"></label>
+                <select asp-for="id_diagnosis" class ="form-control" asp-items="ViewBag.id_diagnosis"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="treatment" class="control-label"></label>
+                <input asp-for="treatment" class="form-control" />
+                <span asp-validation-for="treatment" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

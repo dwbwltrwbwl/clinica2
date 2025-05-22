@@ -1,0 +1,77 @@
+﻿@model IEnumerable<clinica2.Models.receptions>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.date_reception)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.time_reception)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.patients)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.doctors)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.symptoms)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.diagnosis)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.treatment)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.date_reception)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.time_reception)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.patients.first_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.doctors.first_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.status.status_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.symptoms)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.diagnosis.diagnosis_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.treatment)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.id_reception">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.id_reception">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.id_reception">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
