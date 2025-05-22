@@ -34,34 +34,33 @@ public class AccountController : Controller
     {
         if (ModelState.IsValid)
         {
-            var existingUser = await _context.users.FirstOrDefaultAsync(u => u.login == model.Login);
+            var existingUser = await _context.patients.FirstOrDefaultAsync(u => u.login == model.login);
             if (existingUser != null)
             {
                 ModelState.AddModelError("Login", "Этот логин уже занят. Пожалуйста, выберите другой.");
-                ViewData["idRole"] = new SelectList(_context.roles, "idRole", "role", model.IdRole);
+                ViewData["idRole"] = new SelectList(_context.roles, "idRole", "role", model.id_role);
                 return View(model);
             }
-            if (!IsStrongPassword(model.Password))
+            if (!IsStrongPassword(model.password))
             {
                 ModelState.AddModelError("Password", "Пароль должен содержать не менее 6 символов, одну заглавную букву, одну строчную букву, одну цифру и один специальный символ.");
-                ViewData["idRole"] = new SelectList(_context.roles, "idRole", "role", model.IdRole);
+                ViewData["idRole"] = new SelectList(_context.roles, "idRole", "role", model.id_role);
                 return View(model);
             }
-            var user = new User
+            var user = new patients
             {
-                lastName = model.LastName,
-                firstName = model.FirstName,
-                middleName = model.MiddleName,
-                email = model.Email,
-                login = model.Login,
-                password = model.Password,
-                idRole = 2
+                first_name = model.first_name,
+                last_name = model.last_name,
+                middle_name = model.middle_name,
+                login = model.login,
+                password = model.password,
+                id_role = 2
             };
-            _context.users.Add(user);
+            _context.patients.Add(user);
             await _context.SaveChangesAsync();
             return RedirectToAction("Index", "Home");
         }
-        ViewData["idRole"] = new SelectList(_context.roles, "idRole", "role", model.IdRole);
+        ViewData["idRole"] = new SelectList(_context.roles, "idRole", "role", model.id_role);
         return View(model);
     }
     // GET: Account/Login
@@ -74,13 +73,13 @@ public class AccountController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Login(string login, string password)
     {
-        var user = await _context.users.FirstOrDefaultAsync(u => u.login == login && u.password == password);
+        var user = await _context.doctors.FirstOrDefaultAsync(u => u.login == login && u.password == password);
         if (user != null)
         {
             var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.Name, user.login),
-                new Claim(ClaimTypes.Role, user.idRole.ToString())
+                new Claim(ClaimTypes.Role, user.id_role.ToString())
             };
             var claimsIdentity = new ClaimsIdentity(
                 claims, CookieAuthenticationDefaults.AuthenticationScheme);

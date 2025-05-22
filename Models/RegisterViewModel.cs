@@ -6,27 +6,38 @@ namespace clinica2.Models
     {
         [Required(ErrorMessage = "Фамилия обязательна.")]
         [StringLength(50, ErrorMessage = "Фамилия не может превышать 50 символов.")]
-        public string LastName { get; set; }
+        public string? first_name { get; set; }
 
         [Required(ErrorMessage = "Имя обязательно.")]
         [StringLength(50, ErrorMessage = "Имя не может превышать 50 символов.")]
-        public string FirstName { get; set; }
+        public string? last_name { get; set; }
 
         [Required(ErrorMessage = "Отчество обязательно.")]
         [StringLength(50, ErrorMessage = "Отчество не может превышать 50 символов.")]
-        public string MiddleName { get; set; }
+        public string? middle_name { get; set; }
 
-        [Required(ErrorMessage = "Электронная почта обязательна.")]
-        [EmailAddress(ErrorMessage = "Некорректный формат электронной почты.")]
-        public string Email { get; set; }
+        [Required(ErrorMessage = "Дата рождения обязательна.")]
+        public DateTime? date_of_birth { get; set; }
+
+        [Required(ErrorMessage = "Пол обязателен.")]
+        [StringLength(20, ErrorMessage = "Пол не может превышать 20 символов.")]
+        public string? gender { get; set; }
+
+        [StringLength(50, ErrorMessage = "Номер полиса не может превышать 50 символов.")]
+        public string? policy_number { get; set; }
+
+        [Required]
+        [StringLength(20, ErrorMessage = "Телефон не может превышать 20 символов.")]
+        public string? telephone { get; set; }
 
         [Required(ErrorMessage = "Логин обязателен.")]
         [StringLength(50, ErrorMessage = "Логин не может превышать 50 символов.")]
-        public string Login { get; set; }
+        public string? login { get; set; }
 
         [Required(ErrorMessage = "Пароль обязателен.")]
         [StringLength(50, ErrorMessage = "Пароль не может превышать 50 символов.")]
-        public string Password { get; set; }
-        public int IdRole { get; set; }
+        public string? password { get; set; }
+        public int id_site { get; set; }
+        public int id_role { get; set; }
     }
 }
