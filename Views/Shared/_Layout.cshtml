@@ -30,43 +30,67 @@
                         }
                         else
                         {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="Index" style="font-weight: bold; color: #28a745 !important; border: 2px solid #28a745; padding: 5px 10px; border-radius: 5px; display: inline-block; margin-right: 10px;">Продукты</a>
-                            </li>
+                            @if (User.IsInRole("2"))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-controller="doctors" asp-action="Index"
+                                       style="font-weight: bold; color: #a35f56 !important; border: 2px solid #a35f56; padding: 5px 10px; border-radius: 5px; display: inline-block; margin-right: 10px;">
+                                        Врачи
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-controller="Receptions" asp-action="Create"
+                                       style="font-weight: bold; color: #a35f56 !important; border: 2px solid #a35f56; padding: 5px 10px; border-radius: 5px; display: inline-block; margin-right: 10px;">
+                                        Записаться
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-controller="Receptions" asp-action="MyRecords"
+                                       style="font-weight: bold; color: #a35f56 !important; border: 2px solid #a35f56; padding: 5px 10px; border-radius: 5px; display: inline-block; margin-right: 10px;">
+                                        Мои записи
+                                    </a>
+                                </li>
+                            }
                             @if (User.IsInRole("1"))
                             {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-controller="receptions" asp-action="Index"
+                                       style="font-weight: bold; color: #a35f56 !important; border: 2px solid #a35f56; padding: 5px 10px; border-radius: 5px; display: inline-block; margin-right: 10px;">
+                                        Приёмы
+                                    </a>
+                                </li>
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="font-weight: bold; color: #28a745 !important; border: 2px solid #28a745; padding: 5px 10px; border-radius: 5px; display: inline-block; margin-right: 10px;">
+                                    <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="font-weight: bold; color: #a35f56 !important; border: 2px solid #a35f56; padding: 5px 10px; border-radius: 5px; display: inline-block; margin-right: 10px;">
                                         Выбор таблицы
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         <li>
-                                            <a class="dropdown-item" asp-area="" asp-controller="Country_Manufacturer" asp-action="Index" style="font-weight: bold; color: #28a745 !important;">Страны производителей</a>
+                                            <a class="dropdown-item" asp-area="" asp-controller="diagnoses" asp-action="Index" style="font-weight: bold; color: #a35f56 !important;">Диагнозы</a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" asp-area="" asp-controller="Firms" asp-action="Index" style="font-weight: bold; color: #28a745 !important;">Фирмы</a>
+                                            <a class="dropdown-item" asp-area="" asp-controller="doctors" asp-action="Index" style="font-weight: bold; color: #a35f56 !important;">Врачи</a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" asp-area="" asp-controller="Materials" asp-action="Index" style="font-weight: bold; color: #28a745 !important;">Материалы</a>
+                                            <a class="dropdown-item" asp-area="" asp-controller="patients" asp-action="Index" style="font-weight: bold; color: #a35f56 !important;">Пациенты</a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" asp-area="" asp-controller="Suppliers" asp-action="Index" style="font-weight: bold; color: #28a745 !important;">Поставщики</a>
+                                            <a class="dropdown-item" asp-area="" asp-controller="roles" asp-action="Index" style="font-weight: bold; color: #a35f56 !important;">Роли</a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" asp-area="" asp-controller="Categories" asp-action="Index" style="font-weight: bold; color: #28a745 !important;">Категории</a>
+                                            <a class="dropdown-item" asp-area="" asp-controller="sites" asp-action="Index" style="font-weight: bold; color: #a35f56 !important;">Участки</a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" asp-area="" asp-controller="Users" asp-action="Index" style="font-weight: bold; color: #28a745 !important;">Пользователи</a>
+                                            <a class="dropdown-item" asp-area="" asp-controller="specializations" asp-action="Index" style="font-weight: bold; color: #a35f56 !important;">Специализации</a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" asp-area="" asp-controller="Roles" asp-action="Index" style="font-weight: bold; color: #28a745 !important;">Роли</a>
+                                            <a class="dropdown-item" asp-area="" asp-controller="status" asp-action="Index" style="font-weight: bold; color: #a35f56 !important;">Статусы</a>
                                         </li>
                                     </ul>
                                 </li>
                             }
                             <li class="nav-item d-flex align-items-center">
                                 <form asp-area="" asp-controller="Account" asp-action="Logout" method="post" style="display:inline;">
-                                    <button type="submit" class="btn btn-link nav-link text-dark" style="padding: 5px 10px; font-weight: bold; border: 2px solid #28a745; border-radius: 5px; background-color: #28a745; color: white !important; margin-right: 10px; display: inline-block;">Выход</button>
+                                    <button type="submit" class="btn btn-link nav-link text-dark" style="padding: 5px 10px; font-weight: bold; border: 2px solid #a35f56; border-radius: 5px; background-color: #a35f56; color: white !important; margin-right: 10px; display: inline-block;">Выход</button>
                                 </form>
                             </li>
                         }

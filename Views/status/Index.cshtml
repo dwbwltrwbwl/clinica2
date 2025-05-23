@@ -4,18 +4,12 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1 style="color: #a35f56;">Статусы</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.status_name)
-            </th>
-            <th></th>
+            <th style="color: #a35f56;">Название статуса</th>
         </tr>
     </thead>
     <tbody>
@@ -23,11 +17,6 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.status_name)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.id_status">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.id_status">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.id_status">Delete</a>
             </td>
         </tr>
 }

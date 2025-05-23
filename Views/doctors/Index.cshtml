@@ -4,42 +4,20 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1 style="color: #a35f56;">Врачи</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.first_name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.last_name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.middle_name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.telephone)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.login)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.password)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.image)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.specializations)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.roles)
-            </th>
-            <th></th>
+            <th style="color: #a35f56;">Фамилия</th>
+            <th style="color: #a35f56;">Имя</th>
+            <th style="color: #a35f56;">Отчество</th>
+            <th style="color: #a35f56;">Телефон</th>
+            <th style="color: #a35f56;">Логин</th>
+            <th style="color: #a35f56;">Пароль</th>
+            <th style="color: #a35f56;">Фото</th>
+            <th style="color: #a35f56;">Специализация</th>
+            <th style="color: #a35f56;">Роль</th>
         </tr>
     </thead>
     <tbody>
@@ -71,11 +49,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.roles.role_name)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.id_doctor">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.id_doctor">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.id_doctor">Delete</a>
             </td>
         </tr>
 }

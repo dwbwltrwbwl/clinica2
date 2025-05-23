@@ -24,7 +24,6 @@ public class AccountController : Controller
     // GET: Account/Register
     public IActionResult Register()
     {
-        // Загружаем список участков для dropdown
         var sites = _context.site.ToList();
         ViewBag.Sites = new SelectList(sites, "id_site", "site_number");
 

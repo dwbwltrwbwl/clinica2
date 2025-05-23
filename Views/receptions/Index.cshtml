@@ -4,39 +4,20 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1 style="color: #a35f56;">Приемы</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.date_reception)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.time_reception)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.patients)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.doctors)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.status)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.symptoms)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.diagnosis)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.treatment)
-            </th>
-            <th></th>
+            <th style="color: #a35f56;">Дата приема</th>
+            <th style="color: #a35f56;">Время приема</th>
+            <th style="color: #a35f56;">Пациент</th>
+            <th style="color: #a35f56;">Врач</th>
+            <th style="color: #a35f56;">Статус</th>
+            <th style="color: #a35f56;">Симптомы</th>
+            <th style="color: #a35f56;">Диагноз</th>
+            <th style="color: #a35f56;">Лечение</th>
+            <th style="color: #a35f56;"></th>
         </tr>
     </thead>
     <tbody>
@@ -68,7 +49,6 @@
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.id_reception">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.id_reception">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.id_reception">Delete</a>
             </td>
         </tr>
