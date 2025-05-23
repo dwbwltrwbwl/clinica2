@@ -17,7 +17,7 @@
             <th style="color: #a35f56;">Симптомы</th>
             <th style="color: #a35f56;">Диагноз</th>
             <th style="color: #a35f56;">Лечение</th>
-            <th style="color: #a35f56;"></th>
+            <th style="color: #a35f56;">Действия</th>
         </tr>
     </thead>
     <tbody>
@@ -30,10 +30,10 @@
                 @Html.DisplayFor(modelItem => item.time_reception)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.patients.first_name)
+                @item.patients.first_name @item.patients.last_name @item.patients.middle_name
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.doctors.first_name)
+                @item.doctors.first_name @item.doctors.last_name @item.doctors.middle_name
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.status.status_name)
@@ -48,8 +48,8 @@
                 @Html.DisplayFor(modelItem => item.treatment)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.id_reception">Edit</a> |
-                <a asp-action="Delete" asp-route-id="@item.id_reception">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.id_reception">Редактировать</a> |
+                <a asp-action="Delete" asp-route-id="@item.id_reception">Удалить</a>
             </td>
         </tr>
 }

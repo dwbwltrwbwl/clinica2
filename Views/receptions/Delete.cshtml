@@ -4,66 +4,43 @@
     ViewData["Title"] = "Delete";
 }
 
-<h1>Delete</h1>
-
-<h3>Are you sure you want to delete this?</h3>
+<h1 style="color: #a35f56;">Удаление</h1>
+<h3 style="color: #a35f56;">Вы уверены, что хотите это удалить?</h3>
 <div>
-    <h4>receptions</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.date_reception)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.date_reception)
+        <dt class = "col-sm-2">Дата приема</dt>
+        <dd class = "col-sm-10">@Html.DisplayFor(model => model.date_reception)</dd>
+        <dt class = "col-sm-2">Время приема</dt>
+        <dd class = "col-sm-10">@Html.DisplayFor(model => model.time_reception)</dd>
+        <dt class = "col-sm-2">Пациент</dt>
+        <dd class="col-sm-10">
+            @Model.patients.first_name
+            @Model.patients.last_name
+            @Model.patients.middle_name
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.time_reception)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.time_reception)
+        <dt class = "col-sm-2">Врач</dt>
+        <dd class="col-sm-10">
+            @Model.doctors.first_name
+            @Model.doctors.last_name
+            @Model.doctors.middle_name
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.patients)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.patients.first_name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.doctors)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.doctors.first_name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.status)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.status.status_name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.symptoms)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.symptoms)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.diagnosis)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.diagnosis.diagnosis_name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.treatment)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.treatment)
-        </dd>
+        <dt class = "col-sm-2">Статус</dt>
+        <dd class = "col-sm-10">@Html.DisplayFor(model => model.status.status_name)</dd>
+        <dt class = "col-sm-2">Симптомы</dt>
+        <dd class = "col-sm-10">@Html.DisplayFor(model => model.symptoms)</dd>
+        <dt class = "col-sm-2">Диагноз</dt>
+        <dd class = "col-sm-10">@Html.DisplayFor(model => model.diagnosis.diagnosis_name)</dd>
+        <dt class = "col-sm-2">Лечение</dt>
+        <dd class = "col-sm-10">@Html.DisplayFor(model => model.treatment)</dd>
     </dl>
     
     <form asp-action="Delete">
         <input type="hidden" asp-for="id_reception" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
+        <input type="submit" value="Удалить" class="btn btn-danger" style="font-weight: bold; padding: 6px 12px; border-radius: 4px;" />
+        <a asp-action="Index" class="btn"
+           style="font-weight: bold; padding: 6px 12px; border-radius: 4px; background-color: #a35f56; color: white; border: 1px solid #a35f56; margin-left: 10px;">
+            Вернуться
+        </a>
     </form>
 </div>

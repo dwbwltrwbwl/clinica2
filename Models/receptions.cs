@@ -7,6 +7,7 @@ namespace clinica2.Models
     {
         [Key]
         public int id_reception { get; set; }
+        [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}")]
         public DateTime? date_reception { get; set; }
         public TimeSpan? time_reception { get; set; }
 
