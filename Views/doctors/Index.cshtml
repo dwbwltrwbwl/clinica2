@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<clinica2.Models.doctors>
-
 @{
     ViewData["Title"] = "Index";
+    var userRole = ViewData["UserRole"] as int?;
 }
 
 <h1 style="color: #a35f56;">Врачи</h1>
@@ -9,48 +9,65 @@
 <table class="table">
     <thead>
         <tr>
-            <th style="color: #a35f56;">Фамилия</th>
-            <th style="color: #a35f56;">Имя</th>
-            <th style="color: #a35f56;">Отчество</th>
-            <th style="color: #a35f56;">Телефон</th>
-            <th style="color: #a35f56;">Логин</th>
-            <th style="color: #a35f56;">Пароль</th>
-            <th style="color: #a35f56;">Фото</th>
-            <th style="color: #a35f56;">Специализация</th>
-            <th style="color: #a35f56;">Роль</th>
+            @if (userRole == 2)
+            {
+                <th style="color: #a35f56;">Фамилия</th>
+                <th style="color: #a35f56;">Имя</th>
+                <th style="color: #a35f56;">Отчество</th>
+                <th style="color: #a35f56;">Фото</th>
+                <th style="color: #a35f56;">Специализация</th>
+            }
+            else
+            {
+                <th style="color: #a35f56;">Фамилия</th>
+                <th style="color: #a35f56;">Имя</th>
+                <th style="color: #a35f56;">Отчество</th>
+                <th style="color: #a35f56;">Телефон</th>
+                <th style="color: #a35f56;">Логин</th>
+                <th style="color: #a35f56;">Пароль</th>
+                <th style="color: #a35f56;">Фото</th>
+                <th style="color: #a35f56;">Специализация</th>
+                <th style="color: #a35f56;">Роль</th>
+            }
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.first_name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.last_name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.middle_name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.telephone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.login)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.password)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.image)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.specializations.specialization_name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.roles.role_name)
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                @if (userRole == 2)
+                {
+                    <td>@item.first_name</td>
+                    <td>@item.last_name</td>
+                    <td>@item.middle_name</td>
+                    <td>
+                        @if (!string.IsNullOrEmpty(item.image))
+                        {
+                            <img src="@Url.Content(item.image)"
+                                 style="max-width: 100px; height: auto;" />
+                        }
+                    </td>
+                    <td>@item.specializations?.specialization_name</td>
+                }
+                else
+                {
+                    <td>@item.first_name</td>
+                    <td>@item.last_name</td>
+                    <td>@item.middle_name</td>
+                    <td>@item.telephone</td>
+                    <td>@item.login</td>
+                    <td>@item.password</td>
+                    <td>
+                        @if (!string.IsNullOrEmpty(item.image))
+                        {
+                            <img src="@Url.Content(item.image)"
+                                 style="max-width: 100px; height: auto;" />
+                        }
+                    </td>
+                    <td>@item.specializations?.specialization_name</td>
+                    <td>@item.roles?.role_name</td>
+                }
+            </tr>
+        }
     </tbody>
 </table>

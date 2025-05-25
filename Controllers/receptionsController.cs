@@ -51,16 +51,32 @@ namespace clinica2.Controllers
         // GET: receptions/Create
         public IActionResult Create()
         {
+            // Формируем список пациентов с ФИО
+            var patients = _context.patients
+                .ToList()
+                .Select(p => new
+                {
+                    id_patient = p.id_patient,
+                    FullName = $"{p.first_name} {p.last_name} {p.middle_name ?? ""}".TrimEnd()
+                });
+            ViewData["id_patient"] = new SelectList(patients, "id_patient", "FullName");
+
+            // Формируем список врачей с ФИО
+            var doctors = _context.doctors
+                .ToList()
+                .Select(d => new
+                {
+                    id_doctor = d.id_doctor,
+                    FullName = $"{d.first_name} {d.last_name} {d.middle_name ?? ""}".TrimEnd()
+                });
+            ViewData["id_doctor"] = new SelectList(doctors, "id_doctor", "FullName");
+
             ViewData["id_diagnosis"] = new SelectList(_context.diagnosis, "id_diagnosis", "diagnosis_name");
-            ViewData["id_doctor"] = new SelectList(_context.doctors, "id_doctor", "first_name");
-            ViewData["id_patient"] = new SelectList(_context.patients, "id_patient", "first_name");
             ViewData["id_status"] = new SelectList(_context.status, "id_status", "status_name");
             return View();
         }
 
         // POST: receptions/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("id_reception,date_reception,time_reception,id_patient,id_doctor,id_status,symptoms,id_diagnosis,treatment")] receptions receptions)
@@ -71,9 +87,26 @@ namespace clinica2.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+
+            var patients = _context.patients
+                .ToList()
+                .Select(p => new
+                {
+                    id_patient = p.id_patient,
+                    FullName = $"{p.first_name} {p.last_name} {p.middle_name ?? ""}".TrimEnd()
+                });
+            ViewData["id_patient"] = new SelectList(patients, "id_patient", "FullName", receptions.id_patient);
+
+            var doctors = _context.doctors
+                .ToList()
+                .Select(d => new
+                {
+                    id_doctor = d.id_doctor,
+                    FullName = $"{d.first_name} {d.last_name} {d.middle_name ?? ""}".TrimEnd()
+                });
+            ViewData["id_doctor"] = new SelectList(doctors, "id_doctor", "FullName", receptions.id_doctor);
+
             ViewData["id_diagnosis"] = new SelectList(_context.diagnosis, "id_diagnosis", "diagnosis_name", receptions.id_diagnosis);
-            ViewData["id_doctor"] = new SelectList(_context.doctors, "id_doctor", "first_name", receptions.id_doctor);
-            ViewData["id_patient"] = new SelectList(_context.patients, "id_patient", "first_name", receptions.id_patient);
             ViewData["id_status"] = new SelectList(_context.status, "id_status", "status_name", receptions.id_status);
             return View(receptions);
         }
@@ -91,16 +124,31 @@ namespace clinica2.Controllers
             {
                 return NotFound();
             }
+
+            var patients = _context.patients
+                .ToList()
+                .Select(p => new
+                {
+                    id_patient = p.id_patient,
+                    FullName = $"{p.first_name} {p.last_name} {p.middle_name ?? ""}".TrimEnd()
+                });
+            ViewData["id_patient"] = new SelectList(patients, "id_patient", "FullName", receptions.id_patient);
+
+            var doctors = _context.doctors
+                .ToList()
+                .Select(d => new
+                {
+                    id_doctor = d.id_doctor,
+                    FullName = $"{d.first_name} {d.last_name} {d.middle_name ?? ""}".TrimEnd()
+                });
+            ViewData["id_doctor"] = new SelectList(doctors, "id_doctor", "FullName", receptions.id_doctor);
+
             ViewData["id_diagnosis"] = new SelectList(_context.diagnosis, "id_diagnosis", "diagnosis_name", receptions.id_diagnosis);
-            ViewData["id_doctor"] = new SelectList(_context.doctors, "id_doctor", "first_name", receptions.id_doctor);
-            ViewData["id_patient"] = new SelectList(_context.patients, "id_patient", "first_name", receptions.id_patient);
             ViewData["id_status"] = new SelectList(_context.status, "id_status", "status_name", receptions.id_status);
             return View(receptions);
         }
 
         // POST: receptions/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("id_reception,date_reception,time_reception,id_patient,id_doctor,id_status,symptoms,id_diagnosis,treatment")] receptions receptions)
@@ -130,9 +178,26 @@ namespace clinica2.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+
+            var patients = _context.patients
+        .ToList()
+        .Select(p => new
+        {
+            id_patient = p.id_patient,
+            FullName = $"{p.first_name} {p.last_name} {p.middle_name ?? ""}".TrimEnd()
+        });
+            ViewData["id_patient"] = new SelectList(patients, "id_patient", "FullName", receptions.id_patient);
+
+            var doctors = _context.doctors
+                .ToList()
+                .Select(d => new
+                {
+                    id_doctor = d.id_doctor,
+                    FullName = $"{d.first_name} {d.last_name} {d.middle_name ?? ""}".TrimEnd()
+                });
+            ViewData["id_doctor"] = new SelectList(doctors, "id_doctor", "FullName", receptions.id_doctor);
+
             ViewData["id_diagnosis"] = new SelectList(_context.diagnosis, "id_diagnosis", "diagnosis_name", receptions.id_diagnosis);
-            ViewData["id_doctor"] = new SelectList(_context.doctors, "id_doctor", "first_name", receptions.id_doctor);
-            ViewData["id_patient"] = new SelectList(_context.patients, "id_patient", "first_name", receptions.id_patient);
             ViewData["id_status"] = new SelectList(_context.status, "id_status", "status_name", receptions.id_status);
             return View(receptions);
         }

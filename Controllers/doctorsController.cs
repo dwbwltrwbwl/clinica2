@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using clinica2.Data;
 using clinica2.Models;
+using System.Security.Claims;
 
 namespace clinica2.Controllers
 {
@@ -22,8 +23,22 @@ namespace clinica2.Controllers
         // GET: doctors
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.doctors.Include(d => d.roles).Include(d => d.specializations);
-            return View(await applicationDbContext.ToListAsync());
+            int? userRole = null;
+            if (User.Identity.IsAuthenticated)
+            {
+                var roleClaim = User.FindFirst(ClaimTypes.Role);
+                if (roleClaim != null && int.TryParse(roleClaim.Value, out int parsedRole))
+                {
+                    userRole = parsedRole;
+                }
+            }
+            ViewData["UserRole"] = userRole;
+
+            var doctors = _context.doctors
+                .Include(d => d.roles)
+                .Include(d => d.specializations);
+
+            return View(await doctors.ToListAsync());
         }
 
         // GET: doctors/Details/5
