@@ -95,13 +95,13 @@ public class AccountController : Controller
     public async Task<IActionResult> Login(string login, string password)
     {
         var doctor = await _context.doctors
-            .FirstOrDefaultAsync(d => d.login == login && d.password == password);
-
+        .FirstOrDefaultAsync(d => d.login == login && d.password == password);
         if (doctor != null)
         {
             return await AuthenticateUser(
                 doctor.login,
-                doctor.id_role.ToString(), "doctors", "Index", "Home");
+                doctor.id_role.ToString(),
+                "doctors", "Index", "receptions");
         }
         var patient = await _context.patients
             .FirstOrDefaultAsync(p => p.login == login && p.password == password);
@@ -109,7 +109,8 @@ public class AccountController : Controller
         {
             return await AuthenticateUser(
                 patient.login,
-                patient.id_role.ToString(), "patient", "Index", "Home");
+                patient.id_role.ToString(),
+                "patient", "Index", "doctors");
         }
         ModelState.AddModelError("", "Неверный логин или пароль");
         return View();

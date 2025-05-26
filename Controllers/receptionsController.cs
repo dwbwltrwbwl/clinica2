@@ -51,7 +51,6 @@ namespace clinica2.Controllers
         // GET: receptions/Create
         public IActionResult Create()
         {
-            // Формируем список пациентов с ФИО
             var patients = _context.patients
                 .ToList()
                 .Select(p => new
@@ -61,7 +60,6 @@ namespace clinica2.Controllers
                 });
             ViewData["id_patient"] = new SelectList(patients, "id_patient", "FullName");
 
-            // Формируем список врачей с ФИО
             var doctors = _context.doctors
                 .ToList()
                 .Select(d => new

@@ -11,21 +11,21 @@
         <tr>
             @if (userRole == 2)
             {
+                <th style="color: #a35f56;">Фото</th>
                 <th style="color: #a35f56;">Фамилия</th>
                 <th style="color: #a35f56;">Имя</th>
                 <th style="color: #a35f56;">Отчество</th>
-                <th style="color: #a35f56;">Фото</th>
                 <th style="color: #a35f56;">Специализация</th>
             }
             else
             {
+                <th style="color: #a35f56;">Фото</th>
                 <th style="color: #a35f56;">Фамилия</th>
                 <th style="color: #a35f56;">Имя</th>
                 <th style="color: #a35f56;">Отчество</th>
                 <th style="color: #a35f56;">Телефон</th>
                 <th style="color: #a35f56;">Логин</th>
                 <th style="color: #a35f56;">Пароль</th>
-                <th style="color: #a35f56;">Фото</th>
                 <th style="color: #a35f56;">Специализация</th>
                 <th style="color: #a35f56;">Роль</th>
             }
@@ -37,33 +37,27 @@
             <tr>
                 @if (userRole == 2)
                 {
+                    <td>
+                        <img src="@Url.Content("~/Images/" + (string.IsNullOrEmpty(item.image) ? "nofoto.jpg" : item.image))"
+                             style="max-width: 150px; height: auto;" />
+                    </td>
                     <td>@item.first_name</td>
                     <td>@item.last_name</td>
                     <td>@item.middle_name</td>
-                    <td>
-                        @if (!string.IsNullOrEmpty(item.image))
-                        {
-                            <img src="@Url.Content(item.image)"
-                                 style="max-width: 100px; height: auto;" />
-                        }
-                    </td>
                     <td>@item.specializations?.specialization_name</td>
                 }
                 else
                 {
+                    <td>
+                        <img src="@Url.Content("~/Images/" + (string.IsNullOrEmpty(item.image) ? "nofoto.jpg" : item.image))"
+                             style="max-width: 150px; height: auto;" />
+                    </td>
                     <td>@item.first_name</td>
                     <td>@item.last_name</td>
                     <td>@item.middle_name</td>
                     <td>@item.telephone</td>
                     <td>@item.login</td>
                     <td>@item.password</td>
-                    <td>
-                        @if (!string.IsNullOrEmpty(item.image))
-                        {
-                            <img src="@Url.Content(item.image)"
-                                 style="max-width: 100px; height: auto;" />
-                        }
-                    </td>
                     <td>@item.specializations?.specialization_name</td>
                     <td>@item.roles?.role_name</td>
                 }
